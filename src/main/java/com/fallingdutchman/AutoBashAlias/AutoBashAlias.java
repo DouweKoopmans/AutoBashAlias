@@ -74,9 +74,19 @@ public class AutoBashAlias {
                 fw.write("\n");
                 fw.write(output);
             }
+            final String sourceCommand = "source " + targetFilePath;
+            
             if (verbose) {
                 System.out.println("output: " + output);
+
+                System.out.println("sourcing target file");
+                System.out.println("source command: ");
             }
+
+            if (!dry_run) {
+                Runtime.getRuntime().exec(sourceCommand);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
