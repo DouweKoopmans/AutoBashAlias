@@ -1,0 +1,28 @@
+group 'com.fallingdutchman'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+sourceCompatibility = 1.7
+mainClassName = 'com.fallingdutchman.AutoBashAlias.AutoBashAlias'
+
+repositories {
+    mavenCentral()
+}
+
+distributions {
+    main {
+        contents {
+            from { 'src/main/resources/install.sh' }
+        }
+    }
+}
+
+distTar {
+    compression = Compression.GZIP
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'args4j', name: 'args4j', version: '2.32'
+}
